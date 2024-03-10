@@ -100,14 +100,7 @@
               src="https://whimsical.com/embed/VbkHMwvj38xjwBk6Ked6w1@2Ux7TurymN7h1RReB9y2"
             ></iframe>
 
-            <h2>Usage</h2>
-            <p>
-              Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur
-              adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida,
-              nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut
-              vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel,
-              interdum mattis neque. Sub<sub>script</sub> works as well!
-            </p>
+            
             <h2>How We Ingest Documents</h2>
             <div class="content">
               <ol type="1" start="0">
@@ -130,89 +123,93 @@
             </div>
             <h2>How We Create Reports</h2>
             <p>
-              (0) User uploads a fact sheet that they've created. A fact sheet
+            <ol type="1" start="0">
+              <li>User uploads a fact sheet that they've created. A fact sheet
               is a document that includes the relevant details of a client's
-              legal issue. (1) User selects the legal documents they want to
+              legal issue.</li>
+              
+              <li>User selects the legal documents they want to
               compare to fact sheet. Users can either select documents that have
-              already been ingested (see above), or submit new ones to ingest.
-              (2) Lawyerly queries GPT-4 with the factsheet and the selected
-              documents for comparison and evaluation of relevancy. (3) The user
-              receives a report of how each document is relevant to their fact
-              sheet!
+              already been ingested (see above), or submit new ones to ingest.</li>
+
+              <li>Lawyerly queries GPT-4 with the factsheet and the selected
+              documents for comparison and evaluation of relevancy.</li>
+              
+              <li>The user receives a report of how each document is relevant to their fact
+              sheet!</li>
+              
+              </ol>
             </p>
             <h2>Future Work</h2>
             <p>
-              (0) Refactor Ingest such that it does not do batches of documents,
+              <ol type="1" start = "0">
+                <li>Refactor Ingest such that it does not do batches of documents,
               but rather single document, and can be run in parallel for loads
-              involving multiple documents. (1) While MongoDB allowed
+              involving multiple documents.</li>
+
+              <li> While MongoDB allowed
               flexibility in prototyping and deploying our product; our data
               models ended up requiring relationships that would have been much
-              easier to implement with a relational database, such as PostGres.
-              (2) Chat function: allow users to directly chat with their
-              documents. (3) [placeholder] summary technique - accretion of
-              blocks (4) [placeholder] chunking - experiment with different
-              parameters to optimize performance (5) Add language vectorization
-              to relevancy report: use "distance scores" to display the
-              relevancies in ascending order (6) [placeholder] document names -
-              no longer pdf name (7) Enhance the prompts used to create
-              summaries: prompts may be tailored by subject matter. Allow users
-              to create their own custom prompts for generating summaries. (8)
-              Train/ fine tune our own proprietary LLM, against the public legal
-              documents (e.g. court cases, legislation) ingested by users.
+              easier to implement with a relational database, such as PostGres.</li>
+
+              <li>Chat function: allow users to directly chat with their
+              documents.</li>
+
+              </ol>
             </p>
-            <h2>Tech Stack</h2>
-            <div class="columns">
+            <!-- <h2>Tech Stack</h2> -->
+            <!-- <div class="columns">
               <div class="column">
-                <!-- Your first article/message -->
+               
                 <article class="message">
                   <div class="message-header">Hello World</div>
                   <div class="message-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     <strong>Pellentesque risus mi</strong>, tempus quis placerat
                     ut, porta nec nulla...
-                    <!-- content truncated for brevity -->
+                   
                   </div>
                 </article>
               </div>
               <div class="column">
-                <!-- Your second article/message -->
+               
                 <article class="message">
                   <div class="message-header">Hello World</div>
                   <div class="message-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     <strong>Pellentesque risus mi</strong>, tempus quis placerat
                     ut, porta nec nulla...
-                    <!-- content truncated for brevity -->
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <!-- Your first article/message -->
-                <article class="message">
-                  <div class="message-header">Hello World</div>
-                  <div class="message-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
-                    ut, porta nec nulla...
-                    <!-- content truncated for brevity -->
-                  </div>
-                </article>
-              </div>
-              <div class="column">
-                <!-- Your second article/message -->
-                <article class="message">
-                  <div class="message-header">Hello World</div>
-                  <div class="message-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
-                    ut, porta nec nulla...
-                    <!-- content truncated for brevity -->
+                   
                   </div>
                 </article>
               </div>
             </div>
+            <div class="columns">
+              <div class="column">
+            
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                   
+                  </div>
+                </article>
+              </div>
+              <div class="column">
+            
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                  
+                  </div>
+                </article>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
 <template>
   <div class="card">
-    <header class="has-text-weight-bold">Select Cases</header>
-    <h6 class="subtitle is-6 mb-2">
+    <header class="has-text-weight-bold">Documents</header>
+    <p class="subtitle is-6">The following cases will be evaluated for relevancy against the selected fact sheet.</p>
+    <p class="subtitle is-6">
       Click <svg-icon type="mdi" :path="path"></svg-icon> to view case file
-    </h6>
+    </p>
 
     <div class="invisible-box mt-2">
       <div class="control" v-for="(item, index) in cases" :key="index">
@@ -45,7 +46,7 @@
             <span class="file-icon">
               <i class="fas fa-upload"></i>
             </span>
-            <span class="file-label"> Add Case Files </span>
+            <span class="file-label">Add Document</span>
           </span>
           <span class="file-name" v-if="uploadingFiles.length">
             {{ uploadingFiles.length }} files selected
@@ -92,7 +93,7 @@ export default {
     fetchCases() {
       axios
         .get(
-          "https://lawyerlyservice.uw.r.appspot.com/collection/6536eeb20c27a16e16d0ad92/cases"
+          "https://lawyerlyservice.uw.r.appspot.com/collection/6552b0e463c7a4a12cdec1c6/cases"
         )
         .then((response) => {
           this.cases = response.data;
@@ -166,7 +167,7 @@ header {
   display: block;
   font-size: 1.5em;
   margin-top: 0.5em;
-  margin-bottom: 0.67em;
+  margin-bottom: 0em;
   padding-top: 1em;
   margin-left: 0;
   margin-right: 0;

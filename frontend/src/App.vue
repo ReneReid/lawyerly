@@ -1,4 +1,3 @@
-// Source: https://www.vuescript.com/form-wizard-stepper/
 <template>
   <nav
     class="navbar is-fixed-top"
@@ -49,10 +48,10 @@
             title: 'Select Fact Sheet',
           },
           {
-            title: 'Select Cases',
+            title: 'Documents',
           },
           {
-            title: 'Generate Relevancies',
+            title: 'Report',
           },
         ]"
         :beforeChange="onTabBeforeChange"
@@ -94,52 +93,123 @@
               >
             </p>
 
-            <iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/VbkHMwvj38xjwBk6Ked6w1@2Ux7TurymN7h1RReB9y2"></iframe>
+            <iframe
+              style="border: none"
+              width="100%"
+              height="450"
+              src="https://whimsical.com/embed/VbkHMwvj38xjwBk6Ked6w1@2Ux7TurymN7h1RReB9y2"
+            ></iframe>
 
-            <h1>Hello World</h1>
+            
+            <h2>How We Ingest Documents</h2>
+            <div class="content">
+              <ol type="1" start="0">
+                <li>User uploads their legal document PDF files.</li>
+                <li>We extract plaintext out of the PDF and
+              "chunk" it using <span class="has-text-weight-medium">Langchain</span>. Chunking splits text into blocks while
+              maintaing all semantically relevant paragraphs together for as
+              long as possible.</li>
+                <li> We create embedding using the <span class="has-text-weight-medium">OpenAI API</span>,
+              which is the process of representing text in a high-dimensional
+              numerical vector space.</li>
+                <li>We store the embedding in <span class="has-text-weight-medium">Pinecone</span>, a
+              vector which indexes and stores vector embeddings for fast
+              retrieval and similarity search</li>
+              <li>We summarize each document by
+              querying <span class="has-text-weight-medium">GPT-4</span> against the embeddings that we just stored in the
+              previous step.</li>
+              <li>We store each summary in <span class="has-text-weight-medium">MongoDB</span>!</li>
+              </ol>
+            </div>
+            <h2>How We Create Reports</h2>
             <p>
-              Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur
-              adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida,
-              nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut
-              vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel,
-              interdum mattis neque. Sub<sub>script</sub> works as well!
+            <ol type="1" start="0">
+              <li>User uploads a fact sheet that they've created. A fact sheet
+              is a document that includes the relevant details of a client's
+              legal issue.</li>
+              
+              <li>User selects the legal documents they want to
+              compare to fact sheet. Users can either select documents that have
+              already been ingested (see above), or submit new ones to ingest.</li>
+
+              <li>Lawyerly queries GPT-4 with the factsheet and the selected
+              documents for comparison and evaluation of relevancy.</li>
+              
+              <li>The user receives a report of how each document is relevant to their fact
+              sheet!</li>
+              
+              </ol>
             </p>
-            <h2>Second level</h2>
+            <h2>Future Work</h2>
             <p>
-              Curabitur accumsan turpis pharetra
-              <strong>augue tincidunt</strong> blandit. Quisque condimentum
-              maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna
-              vel cursus venenatis. Suspendisse potenti. Etiam mattis sem
-              rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et
-              neque nisl.
+              <ol type="1" start = "0">
+                <li>Refactor Ingest such that it does not do batches of documents,
+              but rather single document, and can be run in parallel for loads
+              involving multiple documents.</li>
+
+              <li> While MongoDB allowed
+              flexibility in prototyping and deploying our product; our data
+              models ended up requiring relationships that would have been much
+              easier to implement with a relational database, such as PostGres.</li>
+
+              <li>Chat function: allow users to directly chat with their
+              documents.</li>
+
+              </ol>
             </p>
-            <ul>
-              <li>
-                In fermentum leo eu lectus mollis, quis dictum mi aliquet.
-              </li>
-              <li>
-                Morbi eu nulla lobortis, lobortis est in, fringilla felis.
-              </li>
-              <li>
-                Aliquam nec felis in sapien venenatis viverra fermentum nec
-                lectus.
-              </li>
-              <li>Ut non enim metus.</li>
-            </ul>
-            <article class="message">
-              <div class="message-header" mg>Hello World</div>
-              <div class="message-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <strong>Pellentesque risus mi</strong>, tempus quis placerat ut,
-                porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla.
-                Nullam gravida purus diam, et dictum
-                <a>felis venenatis</a> efficitur. Aenean ac
-                <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
-                et sollicitudin porttitor, tortor urna tempor ligula, id
-                porttitor mi magna a neque. Donec dui urna, vehicula et sem
-                eget, facilisis sodales sem.
+            <!-- <h2>Tech Stack</h2> -->
+            <!-- <div class="columns">
+              <div class="column">
+               
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                   
+                  </div>
+                </article>
               </div>
-            </article>
+              <div class="column">
+               
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                   
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+            
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                   
+                  </div>
+                </article>
+              </div>
+              <div class="column">
+            
+                <article class="message">
+                  <div class="message-header">Hello World</div>
+                  <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <strong>Pellentesque risus mi</strong>, tempus quis placerat
+                    ut, porta nec nulla...
+                  
+                  </div>
+                </article>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -227,7 +297,7 @@ export default {
 }
 
 .message {
-  max-width: 80%; /* Adjust this value to suit your design needs */
+  max-width: 90%; /* Adjust this value to suit your design needs */
   margin-left: auto; /* Centering the element */
   margin-right: auto; /* Centering the element */
 }
